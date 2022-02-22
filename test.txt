@@ -1,0 +1,185 @@
+/////////////////////
+Test code 1
+
+
+
+package junitbasics;
+
+
+import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+
+public class Assign1Q1Test {
+	
+
+	@Test
+	@DisplayName("Array Testing")
+	public void test() {
+		Assign1Q1 m = new Assign1Q1();
+		int []k = {56, 34, 7,3, 54, 3, 34, 34, 53};
+		int []l = {3,56};
+		
+		int []k1 = {15,18,25,3,48,9,6,10};
+		int []l1 = {3,48};
+		
+		int []k2 = {2,4,6,7,9,52,34,15,40};
+		int []l2 = {2,52};
+		
+ 		assertAll(
+ 				()->assertArrayEquals(l,m.MinMaxFinder(k),"returns same "),
+ 				()->assertArrayEquals(l1,m.MinMaxFinder(k1),"returns same "),
+ 				()->assertArrayEquals(l2,m.MinMaxFinder(k2),"returns same ")
+ 				);
+	}
+}
+
+
+test code 2
+
+package junitbasics;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+class AssingmentQ2Test {
+
+	@Test
+	void test() {
+		Assign1Q2 a=new Assign1Q2();
+		int[] k= {45,78,2,65,87,13,6};
+		assertEquals(2,a.array(k).min);
+		assertEquals(87,a.array(k).max);
+		
+		int[] m= {1,2,3,4,5,6,7,8,9,10};
+		assertEquals(1,a.array(m).min);
+		assertEquals(10,a.array(m).max);
+		
+		int[] l= {10,20,30,40,50,60,70,80,90};
+		assertEquals(10,a.array(l).min);
+		assertEquals(90,a.array(l).max);
+	}
+
+}
+
+
+
+test code 3
+
+package junitbasics;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
+class InsufficientFundsExpcetionTest {
+
+	@Test
+	void test() {
+		
+		Assign1Q3 a=new Assign1Q3();
+		assertThrows(InsufficientFundsExpcetion.class, ()->Assign1Q3.bank(50000));
+		
+		assertThrows(InsufficientFundsExpcetion.class, ()->Assign1Q3.bank(1000000));
+	}
+
+}
+
+
+mMathUtilsTest.java
+
+
+
+package junitbasics;
+
+import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.fail;
+import static org.junit.jupiter.api.Assumptions.assumeTrue;
+
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.Test;
+
+class mMathUtilsTest {
+	
+	mMathUtils m;
+	
+	@BeforeAll
+	static void BeforeAllinit() {
+		System.out.println("This needs to run before all tests");
+	}
+	
+	@AfterEach
+	void cleanup() {
+		System.out.println("Cleaning up....");
+	}
+	
+	@BeforeEach
+	void init() {
+		 m = new mMathUtils();
+	}
+	
+	@Tag("Math")
+	@Nested
+	class TestAdd{
+		
+		@Test
+		@DisplayName("Adding positive numbers")
+		void TestaddPositive() {
+			assertEquals(2,m.add(1, 1));
+		}
+		
+		@Test
+		@DisplayName("Adding negative numbers")
+		void TestaddNegative() {
+			assertEquals(-2,m.add(-1, -1));
+		}
+	}
+	
+	/*@DisplayName("Testing add method")
+	@Test
+	void test() {
+		int expected = 2;
+		int actual = m.add(1, 1);
+		assertEquals(expected,actual);
+	}*/
+	
+	
+	@Tag("Math")
+	@Test
+	void testDiv()
+	{	
+		boolean isServerUp=false;
+		assumeTrue(isServerUp);
+		assertThrows(ArithmeticException.class,()->m.divide(1, 0),"it is not allowd to divide with zero");
+	}
+	
+	@Tag("Circle")
+	@Test
+	void TestCircle() {
+		assertEquals(314.1592653589793,m.computeCircle(10),"should return the area of the circle");
+	}
+	
+	@Tag("Math")
+	@Test
+	@DisplayName("Multiplying two numbers")
+	void testMultiply() {
+		assertAll(
+				()->assertEquals(4,m.multiply(2, 2)),
+				()->assertEquals(0,m.multiply(2, 0)),
+				()->assertEquals(-2,m.multiply(2, -1))
+				);
+	}
+	
+

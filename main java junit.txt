@@ -1,0 +1,137 @@
+Question 1
+
+package junitbasics;
+
+import java.util.Arrays;
+
+public class Assign1Q1 {
+
+	public int[] MinMaxFinder(int arr[]) {
+		
+		Arrays.sort(arr);
+		int arr2[] = new int[2];
+		int min = arr[0];
+		int max = arr[arr.length-1];
+		arr2[0] = min;
+		arr2[1] = max;
+		return arr2;
+}
+}
+
+
+question 2
+
+
+package junitbasics;
+
+public class Assign1Q2 {
+
+	int min=0,max=0;
+	
+
+	public Assign1Q2 array(int[] a)
+	{
+		
+		Assign1Q2 k=new Assign1Q2();
+		int[] b=new int[2];
+		int max=0,min=a[0];
+		for(int i=0;i<a.length;i++)
+		{
+			if(a[i]>max)
+				max=a[i];
+		}
+		b[1]=max;
+		for(int i=0;i<a.length;i++)
+		{
+	
+		if(a[i]<min)
+				min=a[i];
+		}
+		b[0]=min;
+		
+		k.max=max;
+		k.min=min;
+		return k;
+		
+		
+	}
+
+
+
+question 3
+
+package junitbasics;
+
+public class Assign1Q3 {
+	
+	 static int b=40000;
+	public static void bank(int a) throws InsufficientFundsExpcetion
+	{
+			if(b-a<0)
+			{
+				throw new InsufficientFundsExpcetion();
+			}
+			else
+			{
+				System.out.println("balance:" + (b-a));
+			}
+	}
+
+	public static void main(String[] args) {
+		
+		try {
+			bank(30000);
+		} catch (InsufficientFundsExpcetion e) {
+			e.printStackTrace();
+		}
+
+	}
+
+}
+
+//////////////////////
+InsufficientFundsExpcetion.java 
+
+
+
+
+package junitbasics;
+
+public class InsufficientFundsExpcetion extends Exception {
+
+	private static final long serialVersionUID = 1L;
+
+	public InsufficientFundsExpcetion() {
+		
+		super();
+	}
+}
+
+}
+
+//////////////////
+mMathUtils.java
+
+
+
+package junitbasics;
+
+public class mMathUtils {
+
+	public int add(int a,int b) {
+		return a+b;
+	}
+	
+	public double divide(int a, int b) {
+		return a/b;
+	}
+	
+	public int multiply(int a,int b) {
+		return a*b;
+	}
+	
+	public double computeCircle(double radius) {
+		return Math.PI*radius*radius;
+	}
+
+}
